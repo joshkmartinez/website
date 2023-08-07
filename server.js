@@ -19,8 +19,9 @@ fastify.get('/', function (request, reply) {
 });
 
 const PORT = process.env.PORT || 3000;
+const HOST = ("RENDER" in process.env) ? `0.0.0.0` : `localhost`;
 
-fastify.listen({ port: PORT }, (err) => {
+fastify.listen({host: HOST, port: PORT }, function (err, address) {
   console.log('Running on ' + PORT);
   if (err) {
     fastify.log.error(err)
