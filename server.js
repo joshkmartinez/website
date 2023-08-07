@@ -18,8 +18,10 @@ fastify.get('/', function (request, reply) {
   return reply.sendFile('index.html');
 });
 
-fastify.listen({ port: 3000 }, (err) => {
-  console.log('Running on 3000');
+const PORT = process.env.PORT || 3000;
+
+fastify.listen({ port: PORT }, (err) => {
+  console.log('Running on ' + PORT);
   if (err) {
     fastify.log.error(err)
     process.exit(1)
